@@ -34,7 +34,6 @@ import dev.jdtech.jellyfin.models.UiText
 import dev.jdtech.jellyfin.models.isDownloaded
 import dev.jdtech.jellyfin.models.isDownloading
 import dev.jdtech.jellyfin.utils.safeNavigate
-import dev.jdtech.jellyfin.utils.setIconTintColorAttribute
 import dev.jdtech.jellyfin.viewmodels.EpisodeBottomSheetEvent
 import dev.jdtech.jellyfin.viewmodels.EpisodeBottomSheetViewModel
 import dev.jdtech.jellyfin.viewmodels.PlayerItemsEvent
@@ -48,7 +47,6 @@ import java.util.Date
 import java.util.UUID
 import javax.inject.Inject
 import android.R as AndroidR
-import com.google.android.material.R as MaterialR
 import dev.jdtech.jellyfin.core.R as CoreR
 
 @AndroidEntryPoint
@@ -322,34 +320,16 @@ class EpisodeBottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     private fun bindCheckButtonState(played: Boolean) {
-        when (played) {
-            true -> binding.itemActions.checkButton.setIconTintResource(
-                CoreR.color.red,
-            )
-
-            false -> binding.itemActions.checkButton.setIconTintColorAttribute(
-                MaterialR.attr.colorOnSecondaryContainer,
-                requireActivity().theme,
-            )
-        }
+        binding.itemActions.checkButton.isChecked = played
     }
 
     private fun bindFavoriteButtonState(favorite: Boolean) {
-        val favoriteDrawable = when (favorite) {
-            true -> CoreR.drawable.ic_heart_filled
-            false -> CoreR.drawable.ic_heart
-        }
-        binding.itemActions.favoriteButton.setIconResource(favoriteDrawable)
-        when (favorite) {
-            true -> binding.itemActions.favoriteButton.setIconTintResource(
-                CoreR.color.red,
-            )
+        val favoriteDrawable =
+            if (favorite) CoreR.drawable.ic_heart_filled
+            else CoreR.drawable.ic_heart
 
-            false -> binding.itemActions.favoriteButton.setIconTintColorAttribute(
-                MaterialR.attr.colorOnSecondaryContainer,
-                requireActivity().theme,
-            )
-        }
+        binding.itemActions.favoriteButton.setIconResource(favoriteDrawable)
+        binding.itemActions.favoriteButton.isChecked = favorite
     }
 
     private fun bindPlayerItemsError(error: Exception) {
