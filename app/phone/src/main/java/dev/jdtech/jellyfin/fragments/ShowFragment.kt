@@ -211,6 +211,7 @@ class ShowFragment : Fragment() {
                 binding.playtime.text = runTime
             }
             binding.officialRating.text = item.officialRating
+            binding.communityRating.isVisible = item.communityRating != null
             item.communityRating?.also {
                 binding.communityRating.text = String.format(resources.configuration.locales.get(0), "%.1f", it)
                 binding.communityRating.isVisible = true
