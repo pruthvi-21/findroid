@@ -49,4 +49,14 @@ class Converters {
     fun fromStringToFindroidSegmentType(value: String): FindroidSegmentType {
         return FindroidSegmentType.valueOf(value)
     }
+
+    @TypeConverter
+    fun fromListOfStringsToString(value: List<String>?): String? {
+        return value?.joinToString(separator = ",")
+    }
+
+    @TypeConverter
+    fun fromStringToListOfStrings(value: String?): List<String>? {
+        return value?.split(",")?.map { it.trim() }
+    }
 }
