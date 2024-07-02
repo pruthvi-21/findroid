@@ -5,6 +5,8 @@ import android.content.Intent
 import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Html.fromHtml
 import android.text.Spannable
 import android.text.SpannableString
@@ -83,7 +85,7 @@ class MovieFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.uiState.collect { uiState ->
-                        Timber.d("$uiState")
+                        Timber.d("MOVIE $uiState")
                         when (uiState) {
                             is MovieViewModel.UiState.Normal -> bindUiStateNormal(uiState)
                             is MovieViewModel.UiState.Loading -> bindUiStateLoading()
@@ -145,6 +147,10 @@ class MovieFragment : Fragment() {
             }
         }
 
+        binding.refreshLayout.setOnRefreshListener {
+            viewModel.loadData(args.itemId)
+        }
+
         binding.errorLayout.errorRetryButton.setOnClickListener {
             viewModel.loadData(args.itemId)
         }
@@ -155,7 +161,6 @@ class MovieFragment : Fragment() {
 
         binding.itemActions.playButton.setOnClickListener {
             binding.itemActions.playButton.isEnabled = false
-            binding.itemActions.playButton.setIconResource(android.R.color.transparent)
             binding.itemActions.progressPlay.isVisible = true
             if (viewModel.item.sources.filter { it.type == FindroidSourceType.REMOTE }.size > 1) {
                 val dialog = getVideoVersionDialog(
@@ -380,6 +385,7 @@ class MovieFragment : Fragment() {
             bindItemBackdropImage(binding.itemBanner, item)
         }
         binding.loadingIndicator.isVisible = false
+        binding.refreshLayout.isRefreshing = false
         binding.mediaInfoScrollview.isVisible = true
         binding.errorLayout.errorPanel.isVisible = false
     }
@@ -392,6 +398,7 @@ class MovieFragment : Fragment() {
     private fun bindUiStateError(uiState: MovieViewModel.UiState.Error) {
         errorDialog = ErrorDialogFragment.newInstance(uiState.error)
         binding.loadingIndicator.isVisible = false
+        binding.refreshLayout.isRefreshing = false
         binding.mediaInfoScrollview.isVisible = false
         binding.errorLayout.errorPanel.isVisible = true
         checkIfLoginRequired(uiState.error.message)
@@ -412,7 +419,6 @@ class MovieFragment : Fragment() {
 
     private fun bindPlayerItems(items: List<PlayerItem>) {
         navigateToPlayerActivity(items.toTypedArray())
-        binding.itemActions.playButton.setIconResource(CoreR.drawable.ic_play)
         binding.itemActions.progressPlay.visibility = View.INVISIBLE
     }
 
@@ -428,7 +434,6 @@ class MovieFragment : Fragment() {
 
     private fun playButtonNormal() {
         binding.itemActions.playButton.isEnabled = true
-        binding.itemActions.playButton.setIconResource(CoreR.drawable.ic_play)
         binding.itemActions.progressPlay.visibility = View.INVISIBLE
     }
 
