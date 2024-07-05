@@ -33,4 +33,41 @@
         <item name="itemIconSize">22dp</item>
     </style>
 
+    <style name="ThemeX.NavigationRailStyle" parent="Widget.MaterialComponents.NavigationRailView">
+        <item name="itemIconSize">22dp</item>
+    </style>
+
+    <style name="ThemeX.LinearProgressIndicator" parent="Widget.Material3.LinearProgressIndicator">
+        <item name="indicatorTrackGapSize">0dp</item>
+        <item name="trackStopIndicatorSize">0dp</item>
+        <item name="trackColor">?colorSurfaceVariant</item>
+    </style>
+
+    <style name="ThemeX.LoadingProgressStyle" parent="Widget.Material3.LinearProgressIndicator">
+        <item name="android:indeterminate">true</item>
+        <item name="trackColor">?colorSurfaceVariant</item>
+        <item name="indicatorColor">?colorAccent</item>
+    </style>
+
+    <style name="ThemeX.ButtonBarButtonStyle" parent="Widget.Material3.Button.TextButton">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Findroid.Corner.Small</item>
+    </style>
+
+    <style name="ThemeX.AlertDialogTheme" parent="@style/ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="colorPrimary">?colorPrimary</item>
+        <item name="colorBackgroundFloating">?colorSurfaceVariant</item>
+        <item name="buttonBarPositiveButtonStyle">@style/ThemeX.ButtonBarButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/ThemeX.ButtonBarButtonStyle</item>
+        <item name="buttonBarNeutralButtonStyle">@style/ThemeX.ButtonBarButtonStyle</item>
+        <item name="dialogCornerRadius">12dp</item>
+    </style>
+
+    <style name="ThemeX.ItemDetailsSeparator" parent="">
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:text">•</item>
+<!--        <item name="android:textSize">20sp</item>-->
+        <item name="android:layout_marginHorizontal">4dp</item>
+        <item name="android:alpha">0.6</item>
+    </style>
+>>>>>>> d7e48e25 (reorganize metadata)
 </resources>
