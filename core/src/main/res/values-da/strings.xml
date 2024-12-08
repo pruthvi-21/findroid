@@ -136,7 +136,6 @@
     <string name="check_button_description">Marker som afspillet eller ikke-afspillet</string>
     <string name="episode_watched_indicator">Indikator for set episode</string>
     <string name="downloaded_indicator">Indikator for downloadet</string>
-    <string name="episode_name">%1$d. %2$s</string>
     <string name="episode_name_with_end">%1$d-%2$d. %3$s</string>
     <string name="episode_name_extended">S%1$d:E%2$d - %3$s</string>
     <string name="episode_name_extended_with_end">S%1$d:E%2$d-%3$d - %4$s</string>

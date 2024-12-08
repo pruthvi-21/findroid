@@ -33,16 +33,6 @@ class BaseApplication : Application(), Configuration.Provider, ImageLoaderFactor
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
-
-        when (appPreferences.theme) {
-            "system" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-            "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }
-
-        if (appPreferences.dynamicColors) {
-            DynamicColors.applyToActivitiesIfAvailable(this)
-        }
     }
 
     override fun newImageLoader(): ImageLoader {

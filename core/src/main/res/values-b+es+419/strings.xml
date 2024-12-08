@@ -40,7 +40,6 @@
     <string name="check_button_description">Marcar como visto o No visto</string>
     <string name="favorite_button_description">Favorito</string>
     <string name="episode_watched_indicator">Indicador de episodio visto</string>
-    <string name="episode_name">%1$d. %2$s</string>
     <string name="episode_name_extended">T%1$d:E%2$d - %3$s</string>
     <string name="next_up">Siguiente</string>
     <string name="continue_watching">Continar viendo</string>
@@ -110,8 +109,6 @@
     <string name="seeking">Buscando</string>
     <string name="seek_forward_increment">Incrementar adelanto (ms)</string>
     <string name="seek_back_increment">Incrementar retroceso (ms)</string>
-    <string name="dynamic_colors">Colores dinámicos</string>
-    <string name="dynamic_colors_summary">Usar colores dinámicos de Material You (sólo disponible en Android 12+)</string>
     <string name="subtitles">Subtítulos</string>
     <string name="subtitles_summary">Personalizar apariencia de subtítulos</string>
     <string name="episodes_label">Episodios</string>

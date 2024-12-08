@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         scheduleUserDataSync()
-        applyTheme()
         setupActivity()
 
         // Temp fix insets because SDK 35 enables edge to edge by default. This will probably be removed once we move to compose
@@ -163,11 +162,5 @@ class MainActivity : AppCompatActivity() {
 
         workManager.beginUniqueWork("syncUserData", ExistingWorkPolicy.KEEP, syncWorkRequest)
             .enqueue()
-    }
-
-    private fun applyTheme() {
-        if (appPreferences.amoledTheme) {
-            setTheme(CoreR.style.ThemeOverlay_Findroid_Amoled)
-        }
     }
 }

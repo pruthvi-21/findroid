@@ -37,7 +37,6 @@
     <string name="favorite_button_description">पसंदीदा</string>
     <string name="episode_watched_indicator">देखे हुए एपिसोड का संकेतक</string>
     <string name="downloaded_indicator">डाउनलोड संकेतक</string>
-    <string name="episode_name">%1$d. %2$s</string>
     <string name="episode_name_with_end">%1$d-%2$d. %3$s</string>
     <string name="episode_name_extended">स%1$d:ए%2$d - %3$s</string>
     <string name="continue_watching">जारी रखें देखना</string>
